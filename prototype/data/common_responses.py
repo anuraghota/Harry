@@ -12,6 +12,7 @@ responses = \
     {
         "hi": "Hello!Ssup",
         "what is your name": "Harry! Not Potter though. I am just Harry.",
+        "what's your name": "Harry! Not Potter though. I am just Harry.",
         "who is your father": "Anurag! I love my daddy.",
         "who's your father": "Anurag! I love my daddy.",
         "who is your mother": "My dad is single.",
