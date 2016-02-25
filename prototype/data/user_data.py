@@ -52,3 +52,12 @@ def get_location():
     else:
         response = location
     return response
+
+def get_gender():
+    global user_information
+    gender = user_information.get("gender")
+    if gender is None:
+        response= "Can you come closer to the camera? Let me have a look at you."
+    else:
+        response = "Ofcourse, You are a " + gender
+    return response
