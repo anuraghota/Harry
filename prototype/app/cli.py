@@ -1,7 +1,7 @@
 import prototype.data.common_responses as response
 import prototype.data.machine_questions as que
 import prototype.data.user_data as user
-
+import prototype.queryparser.gender_parser as genderparser
 internet_check = False
 
 def start():
@@ -13,7 +13,7 @@ def set_location():
     import json
     try:
         print("Loading...")
-        f = urllib.request.urlopen('http://freegeoip.net/json/',timeout=10)
+        f = urllib.request.urlopen('http://freegeoip.net/json/')
         json_string = f.read()
         f.close()
         location = json.loads(json_string)
@@ -30,7 +30,7 @@ def set_location():
         global internet_check
         internet_check = True
     except Exception as e:
-        user.set_current_location("Hyderabad,Telangana,India")
+        pass
 
 def chat():
     last_harry_message = None
@@ -38,7 +38,7 @@ def chat():
     if internet_check:
         first_harry_greeting = "Hey!"
     else:
-        first_harry_greeting = "Hey! Dude, your internet sucks!"
+        first_harry_greeting = "Dude, your internet sucks!\nAnyways Hello!!"
     print(first_harry_greeting)
     while True:
         user_message = str(input())
@@ -47,6 +47,8 @@ def chat():
             last_harry_message = user.get_name()
         elif last_harry_message == "location":
             last_harry_message = user.get_location()
+        elif last_harry_message == "gender":
+            last_harry_message = user.get_gender()
         print(last_harry_message)
         if user_message.lower() == 'bye':
             break
@@ -61,13 +63,11 @@ def chat():
             user.set_name(user_message)
             last_harry_message = user_message + "! Such a nice name."
             print(last_harry_message)
-
-
-
-
-
-
-
-
-
-
+            gender = genderparser.get_gender(user_message)
+            que.set_tag("gender")
+            user.set_gender(gender)
+            if gender == 'male':
+                last_harry_message = "Ah! Male.Nice Bhai Bhai"
+            else:
+                last_harry_message = "Oh! Girl! You could be my girlfriend!"
+            print(last_harry_message)
