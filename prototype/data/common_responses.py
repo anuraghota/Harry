@@ -1,6 +1,6 @@
 __author__='Anurag'
 
-from user_data import user_information
+from  prototype.data.user_data import user_information
 
 def get_name():
     name = user_information.get("name")
