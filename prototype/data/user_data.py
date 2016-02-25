@@ -15,6 +15,10 @@ def set_office_address(address):
     global user_information
     user_information["office_address"] = address
 
+def set_current_location(location):
+    global user_information
+    user_information["current_location"] = location
+
 def set_age(age):
     global user_information
     user_information["age"] = age
@@ -30,3 +34,21 @@ def set_current_marriage_status(marriage_status):
 def set_current_work_status(work_status):
     global user_information
     user_information["work_status"] = work_status
+
+def get_name():
+    global user_information
+    name = user_information.get("name")
+    if name is None:
+        response= "You haven't told me yet!"
+    else:
+        response = name+"!I dont forget things so fast!"
+    return response
+
+def get_location():
+    global user_information
+    location = user_information.get("current_location")
+    if location is None:
+        response = "Some forces are stopping me to connect to your device. Cant find you."
+    else:
+        response = location
+    return response
