@@ -1,5 +1,6 @@
 __author__='Anurag'
 
+question_tags = {}
 questions = \
     {
         "name": "What is your name?",
@@ -10,3 +11,9 @@ questions = \
         "home_adrress": "Your home address?",
         "office_adrress": "Your office address?"
     }
+
+def set_tag(tag):
+    global question_tags
+    question_tags[tag] = True
+
+
