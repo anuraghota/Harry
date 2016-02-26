@@ -1,7 +1,10 @@
+__author__ = 'Anurag'
+
 import prototype.data.common_responses as response
 import prototype.data.machine_questions as que
 import prototype.data.user_data as user
 import prototype.queryparser.gender_parser as genderparser
+import prototype.internet_search.googleapi as places
 internet_check = False
 
 def start():
@@ -49,6 +52,8 @@ def chat():
             last_harry_message = user.get_location()
         elif last_harry_message == "gender":
             last_harry_message = user.get_gender()
+        elif last_harry_message in response.tags:
+            last_harry_message = places.get_results(last_harry_message)
         print(last_harry_message)
         if user_message.lower() == 'bye':
             break
@@ -68,6 +73,8 @@ def chat():
             user.set_gender(gender)
             if gender == 'male':
                 last_harry_message = "Ah! Male.Nice Bhai Bhai"
-            else:
+            elif gender == "female":
                 last_harry_message = "Oh! Girl! You could be my girlfriend!"
+            else:
+                last_harry_message = "Can't infer your gender from your name!"
             print(last_harry_message)
