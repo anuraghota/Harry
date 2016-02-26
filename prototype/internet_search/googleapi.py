@@ -1,5 +1,5 @@
 __author__ = 'Anurag'
-ACCESS_TOKEN = "YOUR_TOEN_HERE"
+ACCESS_TOKEN = "YOUR_TOKEN_HERE"
 
 import requests
 import json
